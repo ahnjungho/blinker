@@ -1,0 +1,7 @@
+<p style="margin-top:200px">current {{ genreId }}</p>
+
+<ul>
+	<li ng-repeat="keyword in currentGenre.keywords">
+		<a href="#genre/{{ $parent.currentGenre.name|lowercase }}/{{ keyword|lowercase }}">{{ keyword }}</a>
+	</li>
+</ul>
