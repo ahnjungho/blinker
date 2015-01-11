@@ -3,7 +3,8 @@
 var blinkerApp = angular.module('blinkerApp', [
 	'ngRoute',
 	'blinkerControllers',
-	'blinkerServices'
+	'blinkerServices',
+	'blinkerDirectives'
 	]);
 
 blinkerApp.config(['$routeProvider', 

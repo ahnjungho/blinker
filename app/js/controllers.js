@@ -7,8 +7,8 @@ blinkerControllers.controller('NavCtrl', ['$scope', 'Genre',
 		$scope.genres = Genre;
 	}]);
 
-blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', 'Genre', 'VideoList',
-	function($scope, $routeParams, Genre, VideoList){
+blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '$window', '$document', 'Genre', 'VideoList',
+	function($scope, $routeParams, $window, $document, Genre, VideoList){
 		$scope.genreId = $routeParams.genreId;
 		$scope.genres = Genre;
 		$scope.isCorrectGenre = false;
@@ -32,10 +32,26 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 			queryString = $scope.keyword;
 		}
 
-		$scope.videoList = VideoList.get({q: queryString}, function(videos){
-			console.log(videos);
-		});
+		$scope.videoListItems = [];
+		$scope.videoNextPageToken = null;
+		$scope.fetchVideoData = function(){
+			VideoList.get({q: queryString, pageToken: $scope.videoNextPageToken}, function(videos){
+				$scope.videoListItems = $scope.videoListItems.concat(videos.items);
+				$scope.videoNextPageToken = videos.nextPageToken;
+			});
+		};
+		$scope.fetchVideoData();
 
-		
+		var isEndOfPage = false;
+		angular.element($window).bind('scroll', function(){
+			// console.log($document[0].body.clientHeight, $window.innerHeight, $window.pageYOffset);
+			if (($document[0].body.clientHeight - $window.innerHeight - $window.pageYOffset < -1) && !isEndOfPage){
+				isEndOfPage = true;
+			} else if(($document[0].body.clientHeight - $window.innerHeight - $window.pageYOffset >= -1) && isEndOfPage){
+				$scope.fetchVideoData();
+				isEndOfPage = false;
+			}
+		})
+
 
 	}]);

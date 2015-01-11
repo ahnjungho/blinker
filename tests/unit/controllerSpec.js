@@ -36,11 +36,11 @@ describe('Blinker Controllers', function(){
 			ctrl = $controller('GenreVideoListCtrl', {$scope:scope});
 		}));
 
-		it('should create videoList data with 2 videos fetched from xhr', function(){
-			expect(scope.videoList).toEqualData({});
+		it('should create videoList data with 2 videos fetched from xhr', function($controller){
+			expect(scope.videoListItems).toEqualData([]);
 			$httpBackend.flush();
 
-			expect(scope.videoList).toEqualData({ $promise : {}, $resolved : true });
+			expect(scope.videoListItems).toEqualData([undefined]);
 		});
 
 		it('should know genres', inject(function($controller){
