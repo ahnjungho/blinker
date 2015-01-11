@@ -2,9 +2,17 @@
 
 describe('Blinker Controllers', function(){
 
-	describe('NavCtrl', function(){
+	beforeEach(function(){
+    this.addMatchers({
+      toEqualData: function(expected) {
+        return angular.equals(this.actual, expected);
+      }
+    });
+  });
 
-		beforeEach(module('blinkerApp'));
+	beforeEach(module('blinkerApp'));
+
+	describe('NavCtrl', function(){
 
 		it('should have 4 genres', inject(function($controller){
 			var scope = {};
@@ -17,13 +25,25 @@ describe('Blinker Controllers', function(){
 
 
 	describe('GenreVideoListCtrl', function(){
+		var scope, ctrl, $httpBackend;
 
-		beforeEach(module('blinkerApp'));
+		beforeEach(module('blinkerServices'));
+		beforeEach(inject(function(_$httpBackend_, $rootScope, $controller){
+			$httpBackend = _$httpBackend_;
+			$httpBackend.expectGET('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf8fKYSHpv3S7EBiKZTflzBSyv_aoU0Vc&maxResults=50&part=snippet&q=undefined+music&type=video').respond();
+
+			scope = $rootScope.$new();
+			ctrl = $controller('GenreVideoListCtrl', {$scope:scope});
+		}));
+
+		it('should create videoList data with 2 videos fetched from xhr', function(){
+			expect(scope.videoList).toEqualData({});
+			$httpBackend.flush();
+
+			expect(scope.videoList).toEqualData({ $promise : {}, $resolved : true });
+		});
 
 		it('should know genres', inject(function($controller){
-			var scope = {};
-			var ctrl = $controller('GenreVideoListCtrl', {$scope:scope});
-
 			expect(scope.genres.length).toBe(4);
 		}));
 

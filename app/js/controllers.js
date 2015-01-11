@@ -7,12 +7,13 @@ blinkerControllers.controller('NavCtrl', ['$scope', 'Genre',
 		$scope.genres = Genre;
 	}]);
 
-blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', 'Genre',
-	function($scope, $routeParams, Genre){
+blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', 'Genre', 'VideoList',
+	function($scope, $routeParams, Genre, VideoList){
 		$scope.genreId = $routeParams.genreId;
 		$scope.genres = Genre;
 		$scope.isCorrectGenre = false;
 		$scope.currentGenre = {};
+		$scope.keyword = $routeParams.keyword;
 
 		for (var i = $scope.genres.length - 1; i >= 0; i--) {
 			if ($scope.genres[i].name.toLowerCase() === $scope.genreId) {
@@ -23,6 +24,17 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 				$scope.genres[i].class = 'inactive';
 			}
 		};
+
+		var queryString = ''
+		if (!$scope.keyword){
+			queryString = $scope.genreId + ' music';
+		} else {
+			queryString = $scope.keyword;
+		}
+
+		$scope.videoList = VideoList.get({q: queryString}, function(videos){
+			console.log(videos);
+		});
 
 		
 

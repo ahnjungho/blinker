@@ -1,7 +1,13 @@
-<p style="margin-top:200px">current {{ genreId }}</p>
+<p style="margin-top:100px">current {{ genreId }} {{ keyword }}</p>
 
 <ul>
 	<li ng-repeat="keyword in currentGenre.keywords">
 		<a href="#genre/{{ $parent.currentGenre.name|lowercase }}/{{ keyword|lowercase }}">{{ keyword }}</a>
+	</li>
+</ul>
+
+<ul>
+	<li ng-repeat="video in videoList.items">
+		{{video.snippet.title}}
 	</li>
 </ul>

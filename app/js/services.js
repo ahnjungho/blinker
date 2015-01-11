@@ -1,6 +1,6 @@
 'use strict';
 
-var blinkerServices = angular.module('blinkerServices', []);
+var blinkerServices = angular.module('blinkerServices', ['ngResource']);
 
 blinkerServices.factory('Genre', function (){
 	var genres = [
@@ -11,3 +11,12 @@ blinkerServices.factory('Genre', function (){
 
 	return genres;
 });
+
+var youtubeBaseUrl = 'https://www.googleapis.com/youtube/v3/search';
+
+blinkerServices.factory('VideoList', ['$resource', 
+	function($resource){
+		return $resource(youtubeBaseUrl,
+			{type: 'video', maxResults: 50, part: 'snippet', key: 'AIzaSyDf8fKYSHpv3S7EBiKZTflzBSyv_aoU0Vc'},
+			{});
+	}]);
