@@ -63,7 +63,7 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 	      resolve: {
 	        video: function () {
 	        	console.log(video);
-	        	video.url = '//www.youtube.com/embed/' + video.id.videoId + '?autoplay=1';
+	        	video.url = '//www.youtube.com/embed/' + video.id.videoId + '?autoplay=1&loop=1&playlist=' + video.id.videoId ;
 	        	return video;
 	        }
 	      }
@@ -72,10 +72,19 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 
 	}]);
 
-blinkerControllers.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$sce', 'video', 
-	function ($scope, $modalInstance, $sce, video) {
+blinkerControllers.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$window', '$sce', 'video', 
+	function ($scope, $modalInstance, $window, $sce, video) {
 	  $scope.video = video;
 	  $scope.video.url = $sce.trustAsResourceUrl(video.url);
+
+	  var windowWidth = $window.innerWidth;
+	  if(windowWidth > 700){
+	  	$scope.video.height = '500px';
+	  } else if(windowWidth > 400){
+	  	$scope.video.height = '400px';
+	  } else if(windowWidth > 350){
+	  	$scope.video.height = '300px';
+	  }
 
 	  $scope.ok = function () {
 	    $modalInstance.close();
