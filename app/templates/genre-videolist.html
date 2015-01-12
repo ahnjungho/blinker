@@ -1,6 +1,11 @@
-<ol class="breadcrumb">
+<ol class="breadcrumb" ng-show="genreId">
   <li><a href="#/genre/{{ genreId }}">{{ genreId }}</a></li>
   <li ng-show="keyword"><a href="#/genre/{{ genreId }}/{{ keyword }}">{{ keyword }}</a></li>
+</ol>
+
+<ol class="breadcrumb" ng-show="searchQuery">
+	<li>search</li>
+	<li>{{ searchQuery }}</li>
 </ol>
 
 <ul class="subnav">

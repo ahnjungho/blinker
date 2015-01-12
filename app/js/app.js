@@ -20,6 +20,10 @@ blinkerApp.config(['$routeProvider',
 				templateUrl: 'templates/genre-videolist.html',
 				controller: 'GenreVideoListCtrl'
 			}).
+			when('/search/:searchQuery', {
+				templateUrl: 'templates/genre-videolist.html',
+				controller: 'GenreVideoListCtrl'
+			}).
 			otherwise({
 				redirectTo: '/genre/classical'
 			});

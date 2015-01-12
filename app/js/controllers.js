@@ -2,18 +2,23 @@
 
 var blinkerControllers = angular.module('blinkerControllers', []);
 
-blinkerControllers.controller('NavCtrl', ['$scope', 'Genre', 
-	function($scope, Genre){
+blinkerControllers.controller('NavCtrl', ['$scope', '$location', 'Genre', 
+	function($scope, $location, Genre){
 		$scope.genres = Genre;
+		$scope.searchSubmit = function(){
+			$location.path('/search/' + $scope.search);
+			$location.replace();
+		};
 	}]);
 
 blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '$window', '$document', '$modal', 'Genre', 'VideoList',
 	function($scope, $routeParams, $window, $document, $modal, Genre, VideoList){
 		$scope.genreId = $routeParams.genreId;
+		$scope.keyword = $routeParams.keyword;
+		$scope.searchQuery = $routeParams.searchQuery;
 		$scope.genres = Genre;
 		$scope.isCorrectGenre = false;
 		$scope.currentGenre = {};
-		$scope.keyword = $routeParams.keyword;
 
 		for (var i = $scope.genres.length - 1; i >= 0; i--) {
 			if ($scope.genres[i].name.toLowerCase() === $scope.genreId) {
@@ -25,7 +30,12 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 			}
 		};
 
-		var queryString = $scope.keyword ? $scope.keyword : $scope.genreId + ' music';
+		var queryString;
+		if($scope.searchQuery){
+			queryString = $scope.searchQuery;
+		} else {
+			queryString = $scope.keyword ? $scope.keyword : $scope.genreId + ' music';
+		} 
 
 		$scope.videoListItems = [];
 		$scope.videoNextPageToken = null;
