@@ -1,0 +1,93 @@
+
+/* angular bootstrp ui*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+/* blinker */
+
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+body {
+    background-color: #f4f4f4;
+}
+
+img {
+    width: 100%;
+}
+
+.main-contents {
+    margin: 20px;
+    margin-top: 60px;
+}
+
+.subnav {
+    padding: 8px 15px;
+}
+
+.subnav .keyword {
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 2px;
+}
+
+.videos {
+    -moz-column-width: 18em;
+    -webkit-column-width: 18em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap:1em; 
+}
+
+.videos .video {
+    display: inline-block;
+    padding:  .25rem;
+    width:  100%; 
+}
+
+.videos .video .well {
+    position:relative;
+    display: block;
+    cursor: pointer;
+    background-color: #fcfcfc;
+}
+
+.videos .video .well:hover {
+    position:relative;
+    display: block;
+    cursor: pointer;
+    background-color: #eeeeee;
+    border: 1px solid #d3d3d3;
+}
+
+.videos .video .title {
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.videos .video .description {
+    word-wrap: break-word;   
+}
+
+.modal-dialog .modal-title {
+    margin-right: 60px;
+}
+
+.modal-dialog .closebtn {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+}
+
+/* Small devices (tablets, 768px and up) */
+@media (min-width: @screen-sm-min) { 
+
+}
+
+/* Medium devices (desktops, 992px and up) */
+@media (min-width: @screen-md-min) { 
+
+}
+
+/* Large devices (large desktops, 1200px and up) */
+@media (min-width: @screen-lg-min) { 
+
+}
