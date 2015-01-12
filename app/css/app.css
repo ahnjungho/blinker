@@ -1,3 +1,10 @@
+
+/* angular bootstrp ui*/
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }
+
+
+/* blinker */
+
 *, *:before, *:after {box-sizing:  border-box !important;}
 
 body {

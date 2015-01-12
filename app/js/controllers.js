@@ -7,8 +7,8 @@ blinkerControllers.controller('NavCtrl', ['$scope', 'Genre',
 		$scope.genres = Genre;
 	}]);
 
-blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '$window', '$document', 'Genre', 'VideoList',
-	function($scope, $routeParams, $window, $document, Genre, VideoList){
+blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '$window', '$document', '$modal', 'Genre', 'VideoList',
+	function($scope, $routeParams, $window, $document, $modal, Genre, VideoList){
 		$scope.genreId = $routeParams.genreId;
 		$scope.genres = Genre;
 		$scope.isCorrectGenre = false;
@@ -54,5 +54,31 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 			}
 		})
 
+	  $scope.open = function (video) {
+
+	    var modalInstance = $modal.open({
+	      templateUrl: 'videoModalContent.html',
+	      controller: 'ModalInstanceCtrl',
+	      size: 'lg',
+	      resolve: {
+	        video: function () {
+	        	console.log(video);
+	        	video.url = '//www.youtube.com/embed/' + video.id.videoId + '?autoplay=1';
+	        	return video;
+	        }
+	      }
+	    });
+		};
 
 	}]);
+
+blinkerControllers.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', '$sce', 'video', 
+	function ($scope, $modalInstance, $sce, video) {
+	  $scope.video = video;
+	  $scope.video.url = $sce.trustAsResourceUrl(video.url);
+
+	  $scope.ok = function () {
+	    $modalInstance.close();
+	  };
+	}]);
+

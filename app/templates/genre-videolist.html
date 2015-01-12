@@ -8,10 +8,22 @@
 
 <div class="videos row">
 	<div class="video item" ng-repeat="video in videoListItems">
-		<div class="well">
-			<img src="{{ video.snippet.thumbnails.medium.url }}">
-			<p class="title">{{video.snippet.title}}</p>
-			<p class="description">{{video.snippet.description}}</p>
+
+		<div>
+	    <script type="text/ng-template" id="videoModalContent.html">
+	        <div class="modal-header">
+	            <h3 class="modal-title">{{ video.snippet.title }}</h3>
+	            <button class="btn btn-primary" ng-click="ok()">OK</button>
+	        </div>
+	        <div class="modal-body">
+	        		<iframe id="ytplayer" width="100%" height="{{ video.height }}" src="{{ video.url }}" frameborder="0" allowfullscreen/>
+	        </div>
+	    </script>
+			<div class="well" ng-click="open(video)">
+				<img src="{{ video.snippet.thumbnails.medium.url }}">
+				<p class="title">{{video.snippet.title}}</p>
+				<p class="description">{{video.snippet.description}}</p>
+			</div>
 		</div>
 	</div>
 </div>

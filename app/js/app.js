@@ -2,9 +2,11 @@
 
 var blinkerApp = angular.module('blinkerApp', [
 	'ngRoute',
+	'ngSanitize',
 	'blinkerControllers',
 	'blinkerServices',
-	'blinkerDirectives'
+	'blinkerDirectives',
+	'ui.bootstrap'
 	]);
 
 blinkerApp.config(['$routeProvider', 
