@@ -49,4 +49,15 @@ describe('Blinker Controllers', function(){
 
 	});
 
+	describe('ModalInstanceCtrl', function(){
+		it('should have video object', inject(function($controller){
+			var scope = {};
+			var modal = {};
+			var video = {};
+			var ctrl = $controller('ModalInstanceCtrl', {$scope:scope, $modalInstance:modal, video:video});
+			expect(scope.video.url).not.toBeDefined();
+			expect(scope.video.height).toBeDefined();
+		}));
+	});
+
 });

@@ -10,6 +10,8 @@ module.exports = function(config){
       'app/bower_components/angular-sanitize/angular-sanitize.js',
       'app/bower_components/angular-animate/angular-animate.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
+      'app/bower_components/jquery/dist/jquery.min.js',
+      'app/bower_components/bootstrap/dist/js/bootstrap.min.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js',
       'app/js/**/*.js',
       'tests/unit/**/*.js'
