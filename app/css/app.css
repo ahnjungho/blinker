@@ -20,6 +20,16 @@ img {
     margin-top: 60px;
 }
 
+.subnav {
+    padding: 8px 15px;
+}
+
+.subnav .keyword {
+    display: inline-block;
+    margin-top: 2px;
+    margin-right: 2px;
+}
+
 .videos {
     -moz-column-width: 18em;
     -webkit-column-width: 18em;

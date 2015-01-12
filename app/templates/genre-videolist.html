@@ -1,8 +1,11 @@
-<p>current {{ genreId }} {{ keyword }}</p>
+<ol class="breadcrumb">
+  <li><a href="#/genre/{{ genreId }}">{{ genreId }}</a></li>
+  <li ng-show="keyword"><a href="#/genre/{{ genreId }}/{{ keyword }}">{{ keyword }}</a></li>
+</ol>
 
-<ul>
-	<li ng-repeat="keyword in currentGenre.keywords">
-		<a href="#genre/{{ $parent.currentGenre.name|lowercase }}/{{ keyword|lowercase }}">{{ keyword }}</a>
+<ul class="subnav">
+	<li class="keyword" ng-repeat="keyword in currentGenre.keywords">
+		<a class="btn btn-info btn-sm" role="button" href="#genre/{{ $parent.currentGenre.name|lowercase }}/{{ keyword|lowercase }}">{{ keyword }}</a>
 	</li>
 </ul>
 

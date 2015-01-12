@@ -25,12 +25,7 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 			}
 		};
 
-		var queryString = ''
-		if (!$scope.keyword){
-			queryString = $scope.genreId + ' music';
-		} else {
-			queryString = $scope.keyword;
-		}
+		var queryString = $scope.keyword ? $scope.keyword : $scope.genreId + ' music';
 
 		$scope.videoListItems = [];
 		$scope.videoNextPageToken = null;
@@ -55,7 +50,6 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 		})
 
 	  $scope.open = function (video) {
-
 	    var modalInstance = $modal.open({
 	      templateUrl: 'videoModalContent.html',
 	      controller: 'ModalInstanceCtrl',
@@ -78,16 +72,10 @@ blinkerControllers.controller('ModalInstanceCtrl', ['$scope', '$modalInstance', 
 	  $scope.video.url = $sce.trustAsResourceUrl(video.url);
 
 	  var windowWidth = $window.innerWidth;
-	  if(windowWidth > 700){
-	  	$scope.video.height = '500px';
-	  } else if(windowWidth > 400){
-	  	$scope.video.height = '400px';
-	  } else if(windowWidth > 350){
-	  	$scope.video.height = '300px';
-	  }
+	  if(windowWidth > 700){ $scope.video.height = '500px'; } 
+	  else if(windowWidth > 400){ $scope.video.height = '400px'; } 
+	  else if(windowWidth > 350){ $scope.video.height = '300px'; }
 
-	  $scope.ok = function () {
-	    $modalInstance.close();
-	  };
+	  $scope.ok = function () { $modalInstance.close(); };
 	}]);
 
