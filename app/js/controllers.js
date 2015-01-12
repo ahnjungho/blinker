@@ -38,6 +38,7 @@ blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '
 			VideoList.get({q: queryString, pageToken: $scope.videoNextPageToken}, function(videos){
 				$scope.videoListItems = $scope.videoListItems.concat(videos.items);
 				$scope.videoNextPageToken = videos.nextPageToken;
+				console.log(videos);
 			});
 		};
 		$scope.fetchVideoData();

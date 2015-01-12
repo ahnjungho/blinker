@@ -1,0 +1,51 @@
+*, *:before, *:after {box-sizing:  border-box !important;}
+
+body {
+    background-color: #f4f4f4;
+}
+
+img {
+    width: 100%;
+}
+
+.main-contents {
+    margin: 20px;
+    margin-top: 60px;
+}
+
+.videos {
+    -moz-column-width: 18em;
+    -webkit-column-width: 18em;
+    -moz-column-gap: 1em;
+    -webkit-column-gap:1em; 
+}
+
+.videos .video {
+    display: inline-block;
+    padding:  .25rem;
+    width:  100%; 
+}
+
+.videos .video .well {
+    position:relative;
+    display: block;
+    cursor: pointer;
+    background-color: #fcfcfc;
+}
+
+.videos .video .well:hover {
+    position:relative;
+    display: block;
+    cursor: pointer;
+    background-color: #eeeeee;
+    border: 1px solid #d3d3d3;
+}
+
+.videos .video .title {
+    font-weight: bold;
+    word-wrap: break-word;
+}
+
+.videos .video .description {
+    word-wrap: break-word;   
+}
