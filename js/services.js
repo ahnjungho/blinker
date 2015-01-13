@@ -14,7 +14,7 @@ blinkerServices.factory('Genre', function (){
 				keywords: ['Oasis', 'Nervana', 'Guns n\' Roses', 'Red Hot Chili Peppers', 'Prince', 'Pearl Jam', 'Deep Purple', 'Sex Pistols', 'The Smashing Pumpkins', 'U2', 'Scorpions', 'Radiohead', 'Led Zeppelin', 'Pink Floyd', 'The Beatles', 'Black Sabbath', 'Aerosmith', 'Muse', 'The Rolling Stones', 'Queen', 'Coldplay', 'The Offspring', 'Placebo', 'Green Day', ]
 			}, 
 			{ name: 'Kpop', url: '#genre/kpop',
-				keywords: ['Apink', 'Bigbang', '2NE1', 'miss A', 'INFINITE', 'SISTAR', 'Girl\'s Day', 'Yoon Jong shin', 'BEAST', 'EXO', 'AOA', 'f(x)', 'MBLAQ', '4minute', 'CNBLUE', '2PM', 'Girls\' Generation', 'Super Junior']
+				keywords: ['Apink', 'Bigbang', '2NE1', 'miss A', 'INFINITE', 'SISTAR', 'Girl\'s Day', 'Yoon Jong shin', 'BEAST', 'EXO', 'AOA', 'f(x)', 'MBLAQ', '4minute', 'CNBLUE', '2PM', 'Girls\' Generation', 'Super Junior', 'Younha']
 			}];
 
 	return genres;
