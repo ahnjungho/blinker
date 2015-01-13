@@ -13,18 +13,18 @@ blinkerApp.config(['$routeProvider',
 	function($routeProvider){
 		$routeProvider.
 			when('/genre/:genreId', {
-				templateUrl: 'templates/genre-videolist.html',
-				controller: 'GenreVideoListCtrl'
+				templateUrl: 'templates/videolist.html',
+				controller: 'VideoListCtrl'
 			}).
 			when('/genre/:genreId/:keyword', {
-				templateUrl: 'templates/genre-videolist.html',
-				controller: 'GenreVideoListCtrl'
+				templateUrl: 'templates/videolist.html',
+				controller: 'VideoListCtrl'
 			}).
 			when('/search/:searchQuery', {
-				templateUrl: 'templates/genre-videolist.html',
-				controller: 'GenreVideoListCtrl'
+				templateUrl: 'templates/videolist.html',
+				controller: 'VideoListCtrl'
 			}).
 			otherwise({
-				redirectTo: '/genre/classical'
+				redirectTo: '/genre/kpop'
 			});
 	}]);

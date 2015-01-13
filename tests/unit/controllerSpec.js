@@ -17,14 +17,13 @@ describe('Blinker Controllers', function(){
 		it('should have 4 genres', inject(function($controller){
 			var scope = {};
 			var ctrl = $controller('NavCtrl', {$scope:scope});
-
 			expect(scope.genres.length).toBe(4);
 		}));
 
 	});
 
 
-	describe('GenreVideoListCtrl', function(){
+	describe('VideoListCtrl', function(){
 		var scope, ctrl, $httpBackend;
 
 		beforeEach(module('blinkerServices'));
@@ -33,13 +32,12 @@ describe('Blinker Controllers', function(){
 			$httpBackend.expectGET('https://www.googleapis.com/youtube/v3/search?key=AIzaSyDf8fKYSHpv3S7EBiKZTflzBSyv_aoU0Vc&maxResults=50&part=snippet&q=undefined+music&type=video').respond();
 
 			scope = $rootScope.$new();
-			ctrl = $controller('GenreVideoListCtrl', {$scope:scope});
+			ctrl = $controller('VideoListCtrl', {$scope:scope});
 		}));
 
-		it('should create videoList data with 2 videos fetched from xhr', function($controller){
+		it('should create videoList data fetched from xhr', function($controller){
 			expect(scope.videoListItems).toEqualData([]);
 			$httpBackend.flush();
-
 			expect(scope.videoListItems).toEqualData([undefined]);
 		});
 

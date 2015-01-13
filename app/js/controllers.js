@@ -11,7 +11,7 @@ blinkerControllers.controller('NavCtrl', ['$scope', '$location', 'Genre',
 		};
 	}]);
 
-blinkerControllers.controller('GenreVideoListCtrl', ['$scope', '$routeParams', '$window', '$document', '$modal', 'Genre', 'VideoList',
+blinkerControllers.controller('VideoListCtrl', ['$scope', '$routeParams', '$window', '$document', '$modal', 'Genre', 'VideoList',
 	function($scope, $routeParams, $window, $document, $modal, Genre, VideoList){
 		$scope.genreId = $routeParams.genreId;
 		$scope.keyword = $routeParams.keyword;
